@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Application</title>
+    <script>
+        /*function validateForm() {
+          var x = document.forms["myForm"]["first_name_input"]["last_name_input"]["password_input"].value;
+          if (x == "") {
+            alert("Please Fill all the Mandatory Fields");
+            return false;
+          }
+        }*/
+        function ValidateEmail(email_input) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email_input)) {
+                return (true)
+            }
+            alert("You have entered an invalid email address!")
+            return (false)
+        }
+        function validatePhone(phone_input) {
+            var error = "";
+            var stripped = phone_input.replace(/[\(\)\.\-\ ]/g, '');
+            if (stripped == "") {
+                error = "You didn't enter a phone number.";
+            } else if (isNaN(parseInt(stripped))) {
+                phone_input = "";
+                error = "The phone number contains illegal characters.";
+            } else if (!(stripped.length == 10)) {
+                phone_input = "";
+                error = "The phone number is the wrong length. Make sure you included an area code.\n";
+            }
+        }
+    </script>
+    <style>
+    body{background-color: #581845    ;
+        }
+        .button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button:hover span {
+  padding-right: 25px;
+}
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+</head>
+
+<body>
+    <center>
+
+        <form action="submit.html" method="post" onsubmit="return validateForm()" onblur="ValidateEmail(email_input) validatePhone(phone_input) "
+            autocomplete="on" name="myForm">
+            <fieldset>
+                <legend>
+                    <b>Student Buspass Application Form</b>
+                </legend>
+                <table cellspacing="20">
+                       
+                    <tr>
+                        <td label for="first_name">First Name:</td>
+                        <td><input type="text" name="first_name_input" placeholder=" Enter first name" required></td>
+                    </tr>
+                    <tr>
+                        <td label for="last_name">Last Name:</td>
+                        <td><input type="text" name="last_name_input" placeholder=" Enter last name" required></td>
+                    </tr>
+
+                    <tr>
+                        <td label for="Gender">Gender:</td>
+                        <td><input type="radio" name="gender_input" value="male" required>Male</td>
+                        <td><input type="radio" name="gender_input" value="female" required>Female</td>
+                        <td><input type="radio" name="gender_input" value="other" required>Other</td>
+                    </tr>
+                    <tr>
+                        <td label for="dob">Date of Birth:</td>
+                        <td><input type="date" name="date_input" required></td>
+                    </tr>
+
+                    <tr>
+                        <td label for="email">Email:</td>
+                        <td><input type="email" name="email_input" placeholder=" Enter emailid"></td>
+                    </tr>
+                    <tr>
+                        <td label for="phone">Phone no:</td>
+                        <td><input type="telephone" name="phone_input" placeholder=" Enter phone number"></td>
+                    </tr>
+                    <tr>
+                            <td label for="application_type"><h4>Type of Application:</h4></td>
+                            <td><input type="radio" name="application_type_input" value="fresh">Fresh</td>
+                            <td><input type="radio" name="application_type_input" value="renewal">Renewal</td>
+                            <td><input type="radio" name="application_type_input" value="update">Update</td>
+                        </tr>
+                    <tr>
+                        <td label for="stream and year">
+                            <h4>Institution Details:</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td label>Institution Name:</td>
+                        <td><input type="text" name="intsti_input" placeholder=" Enter Institution name"></td>
+                    </tr>
+                    <tr>
+                        <td label>City/District</td>
+                        <td><input type="text" name="city_input" placeholder=" "></td>
+                    </tr>
+                    <tr>
+                        <td label ">Admission No:</td>
+						<td><input type=" text" name="admin_input" placeholder=" "></td>
+                    </tr>
+                    <tr>
+                        <td label for="address">Institution Address:</td>
+                        <td><textarea name="address" placeholder=" Enter Address" required>
+						</textarea></td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td label for="stream and year">
+                            <h4>Route Details:</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td label>Starting Point:</td>
+                        <td><input type="text" name="rout_input" placeholder=" "></td>
+                        <td label>Ending Point:</td>
+                        <td><input type="text" name="end_input" placeholder=" "></td>
+                    </tr>
+                    <tr>
+                        <td label for="stream and year"><h4>Type of Pass:</h4></td>
+                    </tr>
+                    <tr>    
+                        <td><input type="radio" name="csi" value="yes">Exclusive</td>
+                        <td><input type="radio" name="csi" value="yes">General</td>
+                    </tr>
+                    <tr>
+                        <td label for="document required"><h4>Upload Required Documents:</h4></td>
+                    </tr>
+                    <tr>
+                        <td>Upload Bonafide Certificate</td>
+                        <td><input type="file" name="bnfd" required></td>
+                    </tr>
+                    <tr>
+                        <td>Upload Student Id Card</td>
+                        <td><input type="file" name="idcd" required></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="reset" /></td>
+                        <td><input class="button" type="submit" value="Apply" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </center>
+</body>
+</html>
